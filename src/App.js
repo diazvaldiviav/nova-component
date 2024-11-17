@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import NovaNavHeaderMinimal from "./NovaNavHeaderMinimal";
+import "./Styles/NovaStyles.css";
+import NovaLink from "./NovaLink";
+import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NovaNavHeaderMinimal className="custom-header" style={{ backgroundColor: '#f8f9fa' }}>
+      
+      <div className="logo">
+        <img src="/logo.png" alt="Logo" />
+      </div>
+      
+      <nav className="nova-navigation">
+        {/* Cada NovaLink ya incluye su propia estructura ul>li>a */}
+        <NovaLink 
+          href="/"
+          label="Home"
+          icon={<FaHome />}
+          isActive={true}
+        />
+        <NovaLink 
+          href="/about"
+          label="About"
+          icon={<FaInfoCircle />}
+        />
+        <NovaLink 
+          href="/contact"
+          label="Contact"
+          icon={<FaEnvelope />}
+        />
+      </nav>
+      
+      </NovaNavHeaderMinimal>
     </div>
   );
 }

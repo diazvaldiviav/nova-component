@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# Nova Navigation Components v1.0.0
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Una colección de componentes React para crear barras de navegación responsivas y personalizables. El paquete incluye un header de navegación minimalista y enlaces personalizables con efectos visuales.
 
-In the project directory, you can run:
 
-### `npm start`
+## Componentes Principales
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### NovaNavHeaderMinimal
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Un componente de header de navegación responsivo que se adapta automáticamente entre vistas de escritorio y móvil.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Características
 
-### `npm run build`
+Diseño responsivo con menú hamburguesa para móvil
+Soporte para logo y enlaces de navegación
+Personalizable mediante props y variables CSS
+Animaciones suaves en transiciones
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Uso Básico
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+import NovaNavHeaderMinimal from './NovaNavHeaderMinimal';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+function App() {
+  return (
+    <NovaNavHeaderMinimal className="custom-header" style={{ backgroundColor: '#f8f9fa' }}>
+      <div className="logo">
+        <img src="/logo.png" alt="Logo" />
+      </div>
+      <nav className="nova-navigation">
+        {/* Contenido de navegación */}
+      </nav>
+    </NovaNavHeaderMinimal>
+  );
+}
 
-### `npm run eject`
+### NovaLink
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Un componente para crear enlaces de navegación con efectos visuales y soporte para iconos.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Características
+Efectos hover con animación de subrayado
+Soporte para iconos
+Estado activo
+Totalmente personalizable
+Props
+href (string, requerido): URL del enlace
+label (string, requerido): Texto del enlace
+icon (element, opcional): Componente de icono
+isActive (boolean, opcional): Estado activo del enlace
+className (string, opcional): Clases CSS adicionales
+onClick (function, opcional): Manejador de eventos click
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Uso Básico
 
-## Learn More
+Personalización
+El componente utiliza variables CSS personalizables definidas en NovaStyles.css. Las principales variables incluyen:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+:root {
+  --nova-bg-color: #ffffff;          /* Color de fondo del header */
+  --nova-text-color: #333;           /* Color del texto */
+  --nova-hover-color: #007bff;       /* Color hover */
+  --nova-mobile-breakpoint: 768px;   /* Punto de quiebre móvil */
+  /* ... más variables disponibles ... */
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+Breakpoints
+Móvil: < 768px
+Escritorio: ≥ 768px
+Instalación
+Copiar los componentes en tu proyecto:
+NovaNavHeaderMinimal.js
+NovaLink.js
+NovaStyles.css
+Importar los componentes donde se necesiten
+Asegurarse de tener las dependencias necesarias:
+React
+PropTypes
+react-icons (si se usan iconos)
+Dependencias
+React 16.8+ (hooks)
+PropTypes
+react-icons (opcional)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Ejemplo Completo
 
-### Analyzing the Bundle Size
+import React from "react";
+import NovaNavHeaderMinimal from "./NovaNavHeaderMinimal";
+import NovaLink from "./NovaLink";
+import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function App() {
+  return (
+    <NovaNavHeaderMinimal className="custom-header">
+      <div className="logo">
+        <img src="/logo.png" alt="Logo" />
+      </div>
+      <nav className="nova-navigation">
+        <NovaLink 
+          href="/"
+          label="Home"
+          icon={<FaHome />}
+          isActive={true}
+        />
+        <NovaLink 
+          href="/about"
+          label="About"
+          icon={<FaInfoCircle />}
+        />
+        <NovaLink 
+          href="/contact"
+          label="Contact"
+          icon={<FaEnvelope />}
+        />
+      </nav>
+    </NovaNavHeaderMinimal>
+  );
+}
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Próximas Características (TODO)
+Soporte para submenús
+Temas predefinidos
+Animaciones personalizables
+Soporte para navegación anidada
+Licencia
+MIT
+---
+Para más información o reportar problemas, por favor crear un issue en el repositorio.

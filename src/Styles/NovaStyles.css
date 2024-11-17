@@ -1,0 +1,336 @@
+/**
+ * @fileoverview NovaStyles - Theme and Styling for Nova Navigation Component
+ * 
+ * This CSS file contains all the styling for the NovaNavHeaderMinimal component
+ * using CSS custom properties (variables) for easy customization.
+ */
+
+/* Theme Configuration
+ * ------------------
+ * All customizable aspects of the component are defined as CSS variables
+ * in the :root selector. These can be overridden to match your theme.
+ */
+ :root {
+    /* Colors
+     * ------
+     * Main color scheme variables for the component
+     */
+    --nova-bg-color: #ffffff;          /* Background color for the header */
+    --nova-text-color: #333;           /* Default text color */
+    --nova-hover-color: #007bff;       /* Color for hover states */
+    --nova-shadow-color: rgba(0, 0, 0, 0.1);  /* Color for shadows */
+    --nova-hamburger-color: #333;      /* Color for mobile menu button */
+    --nova-mobile-menu-bg: #ffffff;    /* Background for mobile menu */
+  
+    /* Spacing
+     * -------
+     * Variables controlling layout spacing
+     */
+    --nova-padding-x: 2rem;            /* Horizontal container padding */
+    --nova-padding-y: 1rem;            /* Vertical container padding */
+    --nova-menu-gap: 2rem;             /* Space between menu items */
+    --nova-hamburger-gap: 6px;         /* Space between hamburger lines */
+  
+    /* Dimensions
+     * ----------
+     * Size-related variables
+     */
+    --nova-max-width: 1200px;          /* Container maximum width */
+    --nova-logo-size: 1.5rem;          /* Size for logo text */
+    --nova-text-size: 1rem;            /* Size for menu items */
+    --nova-hamburger-width: 25px;      /* Width of mobile menu button */
+    --nova-hamburger-height: 3px;      /* Height of mobile menu lines */
+    
+    /* Breakpoints & Animation
+     * ----------------------
+     * Responsive design and animation settings
+     */
+    --nova-mobile-breakpoint: 768px;   /* Mobile breakpoint width */
+    --nova-transition-time: 0.3s;      /* Animation duration */
+    --nova-shadow: 0 2px 4px var(--nova-shadow-color);
+
+    /* Link Colors */
+  --nova-link-color: var(--nova-text-color, #333);
+  --nova-link-hover-color: var(--nova-hover-color, #007bff);
+  --nova-link-active-color: var(--nova-hover-color, #007bff);
+  
+  /* Link Dimensions */
+  --nova-link-padding: 0.5rem 1rem;
+  --nova-link-font-size: var(--nova-text-size, 1rem);
+  --nova-link-border-radius: 4px;
+  
+  /* Link Animation */
+  --nova-link-transition: all 0.3s ease;
+  
+  /* Link Icon */
+  --nova-link-icon-gap: 0.5rem;
+}
+
+/* Layout Components
+ * ----------------
+ * Core structural styles for the header
+ */
+
+/* ... [resto de los estilos CSS con sus respectivos comentarios] ... */
+  /* Header main container */
+  .header {
+    background-color: var(--nova-bg-color);
+    box-shadow: var(--nova-shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Inner container with max-width */
+  .header-container {
+    max-width: var(--nova-max-width);
+    margin: 0 auto;
+    padding: var(--nova-padding-y) var(--nova-padding-x);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo styles */
+  .logo h1 {
+    margin: 0;
+    font-size: var(--nova-logo-size);
+    font-weight: 500;
+    color: var(--nova-text-color);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .nova-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  
+  /* Navigation menu list */
+  .nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: var(--nova-menu-gap);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation links */
+  .nav-menu a {
+    text-decoration: none;
+    color: var(--nova-text-color);
+    font-size: var(--nova-text-size);
+    transition: color var(--nova-transition-time) ease;
+  }
+  
+  /* Hover effect for links */
+  .nav-menu a:hover {
+    color: var(--nova-hover-color);
+  }
+  
+  /* Hamburger button (hidden by default) */
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  /* Individual hamburger lines */
+  .hamburger-line {
+    display: block;
+    width: var(--nova-hamburger-width);
+    height: var(--nova-hamburger-height);
+    background-color: var(--nova-hamburger-color);
+    margin: var(--nova-hamburger-gap) 0;
+    transition: var(--nova-transition-time) ease;
+  }
+
+  /* List Styles */
+.nova-link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nova-link-item {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Link Styles */
+  .nova-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--nova-link-padding);
+    color: var(--nova-link-color);
+    text-decoration: none;
+    font-size: var(--nova-link-font-size);
+    transition: var(--nova-link-transition);
+    border-radius: var(--nova-link-border-radius);
+    position: relative;
+  }
+  
+  /* Hover Effect */
+  .nova-link:hover {
+    color: var(--nova-link-hover-color);
+  }
+  
+  /* Active State */
+  .nova-link.active {
+    color: var(--nova-link-active-color);
+    font-weight: 500;
+  }
+
+  /* Underline Effect */
+.nova-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--nova-link-hover-color);
+    transition: var(--nova-link-transition);
+    transform: translateX(-50%);
+  }
+  
+  .nova-link:hover::after,
+  .nova-link.active::after {
+    width: calc(100% - 2rem);
+  }
+  
+  /* Icon Styles */
+.nova-link-icon {
+    margin-right: var(--nova-link-icon-gap);
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  /* Label Styles */
+  .nova-link-label {
+    position: relative;
+  }
+
+
+  .desktop-menu {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nova-link {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem;
+    }
+    
+    .nova-link::after {
+      bottom: 0;
+      height: 1px;
+    }
+  
+    /* Show hamburger button on mobile */
+    .desktop-menu {
+      display: none;
+    }
+  
+    .mobile-menu {
+      display: block;
+    }
+    
+    .hamburger {
+      display: block;
+      z-index: 1001;
+    }
+
+     
+
+    .header-content {
+        display: none; /* Oculta el contenido original en móvil */
+      }
+    
+      .nav-menu.active .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+    
+      /* Ajustes para el logo en móvil */
+      .nav-menu.active .logo {
+        margin-bottom: 2rem;
+      }
+    
+      /* Ajustes para la navegación en móvil */
+      .nav-menu.active nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+  
+    /* Mobile menu styling */
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: var(--nova-mobile-menu-bg);
+      padding-top: 4rem;
+      transition: var(--nova-transition-time) ease;
+      box-shadow: var(--nova-shadow);
+    }
+
+
+    .nav-menu .logo {
+      margin-left: 50%;
+      margin-right: 50%;
+    }
+
+    .nova-navigation {
+      display: flex;
+      flex-direction: column;
+    }
+    /* Active state for mobile menu */
+    .nav-menu.active {
+      right: 0;
+    }
+  
+    /* Vertical menu layout for mobile */
+    .nav-menu ul {
+      flex-direction: column;
+      align-items: center;
+      padding: var(--nova-padding-y);
+    }
+  
+    .nav-menu li {
+      margin: 1rem 0;
+    }
+  
+    /* Hamburger button animation */
+    .hamburger.active .hamburger-line:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+  
+    .hamburger.active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .hamburger.active .hamburger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
